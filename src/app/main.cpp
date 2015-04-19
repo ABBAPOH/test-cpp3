@@ -13,6 +13,7 @@ public:
     {
         std::this_thread::sleep_for(std::chrono::nanoseconds(10000000));
         {
+            // lock cout to correctly order messages
             std::unique_lock<std::mutex> lock(*globalMutex);
             std::cout << "hello from client " << _clientId
                       << " task " << _taskId

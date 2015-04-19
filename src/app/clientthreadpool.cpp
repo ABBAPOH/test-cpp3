@@ -3,6 +3,13 @@
 
 #include <assert.h>
 
+/*!
+    \class ClientRunnable
+
+    Runnable that can run a queue of tasks (one per iteraiton), automatically
+    enqueues itself to the pool for each task.
+*/
+
 ClientRunnable::ClientRunnable(ClientThreadPool *pool) :
     _pool(pool)
 {
@@ -32,6 +39,13 @@ void ClientRunnable::run()
     if (autoDelete)
         delete runnable;
 }
+
+/*!
+    \class ClientThreadPool
+    Simple wrapper over the ThreadPool class.
+
+    Manages lifetime of a ClientRunnables.
+*/
 
 ClientThreadPool::ClientThreadPool()
 {

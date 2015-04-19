@@ -3,6 +3,11 @@
 #include <assert.h>
 #include <iostream>
 
+/*!
+    \class ThreadPool
+    Simle thread pool class that can run a single runnable
+*/
+
 ThreadPool::ThreadPool()
 {
 }
