@@ -11,8 +11,10 @@ ClientRunnable::ClientRunnable(ClientThreadPool *pool) :
 
 void ClientRunnable::enqueue(Task *task)
 {
-    std::unique_lock<std::mutex> lock(_mutex);
-    _queue.push_back(task);
+    {
+        std::unique_lock<std::mutex> lock(_mutex);
+        _queue.push_back(task);
+    }
     _pool->_pool.enqueue(this);
 }
 
