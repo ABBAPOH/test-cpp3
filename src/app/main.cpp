@@ -11,7 +11,7 @@ public:
 
     void run()
     {
-        std::this_thread::sleep_for(std::chrono::nanoseconds(10000000));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(100000000));
         {
             // lock cout to correctly order messages
             std::unique_lock<std::mutex> lock(*globalMutex);
@@ -47,6 +47,10 @@ int main(int argc, char *argv[])
         for (int clientId = 0; clientId < clientCount; ++clientId) {
             auto task = new MyTask(taskId, clientId);
             pool.enqueue(clientId, task);
+            {
+                std::unique_lock<std::mutex> lock(*globalMutex);
+                std::cout << "enqueued" << std::endl;
+            }
         }
     }
 
