@@ -12,7 +12,7 @@ Product {
     cpp.cxxFlags: project.cxxFlags
     cpp.linkerFlags: project.linkFlags
 
-    cpp.dynamicLibraries: [ "pthread" ]
+    cpp.dynamicLibraries: !qbs.targetOS.contains("windows") ? [ "pthread" ] : []
 
     Properties {
         condition: qbs.targetOS.contains("osx")

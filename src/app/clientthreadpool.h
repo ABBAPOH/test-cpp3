@@ -3,6 +3,7 @@
 
 #include "threadpool.h"
 
+#include <memory>
 #include <unordered_map>
 
 class Task : public Runnable
