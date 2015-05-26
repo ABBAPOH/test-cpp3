@@ -3,6 +3,7 @@ import qbs.base 1.0
 Product {
     Depends { name: "cpp" }
 
+    name: project.app_target
     type: "application"
     consoleApplication: true
     destinationDirectory: project.install_binary_path

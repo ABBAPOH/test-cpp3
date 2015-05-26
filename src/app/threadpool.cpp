@@ -26,11 +26,8 @@ void ThreadPool::enqueue(Runnable *runnable)
     if (!_running)
         return;
 
-    const bool doWakeUp = _queue.empty();
     _queue.push_back(runnable);
-
-    if (doWakeUp)
-        _condition.notify_all();
+    _condition.notify_all();
 }
 
 bool ThreadPool::init(int threadCount)
