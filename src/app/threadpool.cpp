@@ -30,7 +30,7 @@ void ThreadPool::enqueue(Runnable *runnable)
     _queue.push_back(runnable);
 
     if (doWakeUp)
-        _condition.notify_one();
+        _condition.notify_all();
 }
 
 bool ThreadPool::init(int threadCount)
