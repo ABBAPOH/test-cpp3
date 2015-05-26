@@ -1,7 +1,7 @@
 import qbs.base 1.0
 
 Project {
-    property string app_target: "test-cpp1"
+    property string app_target: "test-cpp3"
 
     property string install_app_path: {
         if (qbs.targetOS.contains("windows"))
